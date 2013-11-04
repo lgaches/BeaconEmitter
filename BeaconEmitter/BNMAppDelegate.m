@@ -7,12 +7,45 @@
 //
 
 #import "BNMAppDelegate.h"
+#import <IOBluetooth/IOBluetooth.h>
+
+#import "BNMBeaconRegion.h"
+
+@interface BNMAppDelegate () <CBPeripheralManagerDelegate>
+
+@property (weak) IBOutlet NSTextField *uuid;
+@property (weak) IBOutlet NSTextField *identifier;
+@property (weak) IBOutlet NSTextField *major;
+@property (weak) IBOutlet NSTextField *minor;
+@property (weak) IBOutlet NSTextField *power;
+
+@property (strong, nonatomic) CBPeripheralManager *manager;
+@end
 
 @implementation BNMAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    _manager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+}
+
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
+    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
+        
+    }
+}
+
+- (IBAction)changeBeaconState:(NSButton *)sender {
+    
+    if ([self.manager isAdvertising]) {
+        [self.manager stopAdvertising];
+        [sender setTitle:@"Turn iBeacon on"];
+    } else {
+        NSUUID *proximityUUID  = [[NSUUID alloc] initWithUUIDString:self.uuid.stringValue];
+        
+        BNMBeaconRegion *beacon = [[BNMBeaconRegion alloc] initWithProximityUUID:proximityUUID major:self.major.intValue minor:self.minor.intValue  identifier:self.identifier.stringValue];
+        [self.manager startAdvertising:[beacon peripheralDataWithMeasuredPower:[NSNumber numberWithInt:self.power.intValue]]];
+        [sender setTitle:@"Turn iBeacon off"];
+    }
 }
 
 @end
