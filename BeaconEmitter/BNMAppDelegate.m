@@ -34,6 +34,7 @@
 @property (weak) IBOutlet NSTextField *minor;
 @property (weak) IBOutlet NSTextField *power;
 @property (weak) IBOutlet NSButton *startBeaconButton;
+@property (weak) IBOutlet NSTextField *bluetoothStatusLbl;
 
 @property (strong, nonatomic) CBPeripheralManager *manager;
 @end
@@ -44,10 +45,37 @@
     _manager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
 }
 
+
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
-    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-        
+    
+    switch (peripheral.state) {
+        case CBPeripheralManagerStateUnknown:
+            [self.bluetoothStatusLbl setStringValue:@"The current state of the peripheral manager is unknown; an update is imminent."];
+            [self.startBeaconButton setEnabled:NO];
+            break;
+        case CBPeripheralManagerStateUnauthorized:
+            [self.bluetoothStatusLbl setStringValue:@"The app is not authorized to use the Bluetooth low energy peripheral/server role."];
+            [self.startBeaconButton setEnabled:NO];
+            break;
+        case CBPeripheralManagerStateResetting:
+            [self.bluetoothStatusLbl setStringValue:@"The connection with the system service was momentarily lost; an update is imminent."];
+            [self.startBeaconButton setEnabled:NO];
+            break;
+        case CBPeripheralManagerStatePoweredOff:
+            [self.bluetoothStatusLbl setStringValue:@"Bluetooth is currently powered off"];
+            [self.startBeaconButton setEnabled:NO];
+            break;
+        case CBPeripheralManagerStateUnsupported:
+            [self.bluetoothStatusLbl setStringValue:@"The platform doesn't support the Bluetooth low energy peripheral/server role."];
+            [self.startBeaconButton setEnabled:NO];
+            break;
+        case CBPeripheralManagerStatePoweredOn:
+            [self.bluetoothStatusLbl setStringValue:@"Bluetooth is currently powered on and is available to use."];
+            [self.startBeaconButton setEnabled:YES];
+            break;
     }
+    
+  
 }
 
 #pragma mark - Actions

@@ -45,7 +45,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y49-Bm-Uhc">
-                        <rect key="frame" x="8" y="24" width="459" height="32"/>
+                        <rect key="frame" x="8" y="13" width="459" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Turn iBeacon on" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="50e-2K-YOK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -167,11 +167,21 @@
                             <action selector="handleClickCopyButton:" target="494" id="OLQ-33-RqK"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kue-Le-uxf">
+                        <rect key="frame" x="14" y="55" width="449" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="MN0-sa-mhH">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>
         <customObject id="494" customClass="BNMAppDelegate">
             <connections>
+                <outlet property="bluetoothStatusLbl" destination="kue-Le-uxf" id="qMI-kS-SXz"/>
                 <outlet property="identifier" destination="oFO-1c-Ban" id="MpG-2Y-qbB"/>
                 <outlet property="major" destination="iCN-zd-Tn8" id="aMC-t6-vcc"/>
                 <outlet property="minor" destination="TmL-ZO-Nm6" id="frM-Fq-So9"/>
