@@ -90,7 +90,12 @@
         NSUUID *proximityUUID  = [[NSUUID alloc] initWithUUIDString:self.uuid.stringValue];
         if (proximityUUID) {
             BNMBeaconRegion *beacon = [[BNMBeaconRegion alloc] initWithProximityUUID:proximityUUID major:self.major.intValue minor:self.minor.intValue  identifier:self.identifier.stringValue];
-            [self.manager startAdvertising:[beacon peripheralDataWithMeasuredPower:[NSNumber numberWithInt:self.power.intValue]]];
+            NSNumber *measuredPower = nil;
+            if (self.power.intValue != 0) {
+                measuredPower = [NSNumber numberWithInt:self.power.intValue];
+            }
+            
+            [self.manager startAdvertising:[beacon peripheralDataWithMeasuredPower:measuredPower]];
             [sender setTitle:@"Turn iBeacon off"];
         } else {
             NSAlert *alert =[NSAlert alertWithMessageText:@"Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"The UUID format is invalid"];

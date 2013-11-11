@@ -39,21 +39,25 @@
 
 - (NSMutableDictionary *)peripheralDataWithMeasuredPower:(NSNumber *)measuredPower {
     NSString *beaconKey = @"kCBAdvDataAppleBeaconKey";
-    unsigned char advertisementBytes[21] = {0};
+    unsigned char advBytes[21] = {0};
     
-    [self.proximityUUID getUUIDBytes:(unsigned char *)&advertisementBytes];
+    if (!measuredPower) {
+        measuredPower = @-59;
+    }
     
-    advertisementBytes[16] = (unsigned char)(self.major.shortValue >> 8);
-    advertisementBytes[17] = (unsigned char)(self.major.shortValue & 255);
+    [self.proximityUUID getUUIDBytes:(unsigned char *)&advBytes];
     
-    advertisementBytes[18] = (unsigned char)(self.minor.shortValue >> 8);
-    advertisementBytes[19] = (unsigned char)(self.minor.shortValue & 255);
+    advBytes[16] = (unsigned char)(self.major.shortValue >> 8);
+    advBytes[17] = (unsigned char)(self.major.shortValue & 255);
     
-    advertisementBytes[20] = measuredPower.shortValue;
+    advBytes[18] = (unsigned char)(self.minor.shortValue >> 8);
+    advBytes[19] = (unsigned char)(self.minor.shortValue & 255);
     
-    NSMutableData *advertisement = [NSMutableData dataWithBytes:advertisementBytes length:21];
+    advBytes[20] = measuredPower.shortValue;
     
-    return [@{beaconKey:advertisement} mutableCopy];
+    NSMutableData *AdvData = [NSMutableData dataWithBytes:advBytes length:21];
+    
+    return [@{beaconKey:AdvData} mutableCopy];
 }
 
 @end
