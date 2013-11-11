@@ -33,6 +33,7 @@
 @property (weak) IBOutlet NSTextField *major;
 @property (weak) IBOutlet NSTextField *minor;
 @property (weak) IBOutlet NSTextField *power;
+@property (weak) IBOutlet NSButton *startBeaconButton;
 
 @property (strong, nonatomic) CBPeripheralManager *manager;
 @end
@@ -49,18 +50,41 @@
     }
 }
 
+#pragma mark - Actions
+
 - (IBAction)changeBeaconState:(NSButton *)sender {
     
     if ([self.manager isAdvertising]) {
         [self.manager stopAdvertising];
         [sender setTitle:@"Turn iBeacon on"];
     } else {
+       
         NSUUID *proximityUUID  = [[NSUUID alloc] initWithUUIDString:self.uuid.stringValue];
-        
-        BNMBeaconRegion *beacon = [[BNMBeaconRegion alloc] initWithProximityUUID:proximityUUID major:self.major.intValue minor:self.minor.intValue  identifier:self.identifier.stringValue];
-        [self.manager startAdvertising:[beacon peripheralDataWithMeasuredPower:[NSNumber numberWithInt:self.power.intValue]]];
-        [sender setTitle:@"Turn iBeacon off"];
+        if (proximityUUID) {
+            BNMBeaconRegion *beacon = [[BNMBeaconRegion alloc] initWithProximityUUID:proximityUUID major:self.major.intValue minor:self.minor.intValue  identifier:self.identifier.stringValue];
+            [self.manager startAdvertising:[beacon peripheralDataWithMeasuredPower:[NSNumber numberWithInt:self.power.intValue]]];
+            [sender setTitle:@"Turn iBeacon off"];
+        } else {
+            NSAlert *alert =[NSAlert alertWithMessageText:@"Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"The UUID format is invalid"];
+            [alert runModal];
+        }
     }
 }
 
+- (IBAction)handleClickRefreshButton:(id)sender {
+    if ([self.manager isAdvertising]) {
+        [self.manager stopAdvertising];
+        [self.startBeaconButton setTitle:@"Turn iBeacon on"];
+    }
+    
+    NSUUID *proximityUUID = [NSUUID UUID];
+    [self.uuid setStringValue:[proximityUUID UUIDString]];
+}
+
+
+- (IBAction)handleClickCopyButton:(id)sender {
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    [pasteboard clearContents];
+    [pasteboard writeObjects:@[self.uuid.stringValue]];
+}
 @end
