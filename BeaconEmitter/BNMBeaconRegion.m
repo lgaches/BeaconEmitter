@@ -56,7 +56,7 @@
     advBytes[20] = measuredPower.shortValue;
     
     NSMutableData *AdvData = [NSMutableData dataWithBytes:advBytes length:21];
-    
+    NSLog(@"%@",AdvData);
     return [@{beaconKey:AdvData} mutableCopy];
 }
 

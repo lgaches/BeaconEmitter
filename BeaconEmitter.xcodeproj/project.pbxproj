@@ -20,6 +20,7 @@
 		4DAB4CB818265834003CC85A /* BeaconEmitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB4CB718265834003CC85A /* BeaconEmitterTests.m */; };
 		4DAB4CC318265871003CC85A /* BNMBeaconRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB4CC218265871003CC85A /* BNMBeaconRegion.m */; };
 		4DAB4CC5182658D7003CC85A /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAB4CC4182658D7003CC85A /* IOBluetooth.framework */; };
+		4DCF29571836371C00845C87 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4DCF29561836371C00845C87 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		4DAB4CC118265871003CC85A /* BNMBeaconRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNMBeaconRegion.h; sourceTree = "<group>"; };
 		4DAB4CC218265871003CC85A /* BNMBeaconRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNMBeaconRegion.m; sourceTree = "<group>"; };
 		4DAB4CC4182658D7003CC85A /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
+		4DCF295518361DF300845C87 /* BeaconEmitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BeaconEmitter.entitlements; sourceTree = "<group>"; };
+		4DCF29561836371C00845C87 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 		4DAB4C9318265834003CC85A /* BeaconEmitter */ = {
 			isa = PBXGroup;
 			children = (
+				4DCF295518361DF300845C87 /* BeaconEmitter.entitlements */,
 				4DAB4CC118265871003CC85A /* BNMBeaconRegion.h */,
 				4DAB4CC218265871003CC85A /* BNMBeaconRegion.m */,
 				4DAB4C9F18265834003CC85A /* BNMAppDelegate.h */,
@@ -129,6 +133,7 @@
 				4DAB4CA218265834003CC85A /* MainMenu.xib */,
 				4DAB4CA518265834003CC85A /* Images.xcassets */,
 				4DAB4C9418265834003CC85A /* Supporting Files */,
+				4DCF29561836371C00845C87 /* Credits.rtf */,
 			);
 			path = BeaconEmitter;
 			sourceTree = "<group>";
@@ -211,6 +216,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Binimo;
 				TargetAttributes = {
+					4DAB4C8918265834003CC85A = {
+						DevelopmentTeam = 6GX5VF8F6Y;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					4DAB4CAA18265834003CC85A = {
 						TestTargetID = 4DAB4C8918265834003CC85A;
 					};
@@ -240,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DCF29571836371C00845C87 /* Credits.rtf in Resources */,
 				4DAB4C9818265834003CC85A /* InfoPlist.strings in Resources */,
 				4DAB4CA618265834003CC85A /* Images.xcassets in Resources */,
 				4DAB4C9E18265834003CC85A /* Credits.rtf in Resources */,
@@ -394,11 +408,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BeaconEmitter/BeaconEmitter.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeaconEmitter/BeaconEmitter-Prefix.pch";
 				INFOPLIST_FILE = "BeaconEmitter/BeaconEmitter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -407,11 +425,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BeaconEmitter/BeaconEmitter.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeaconEmitter/BeaconEmitter-Prefix.pch";
 				INFOPLIST_FILE = "BeaconEmitter/BeaconEmitter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -475,6 +497,7 @@
 				4DAB4CBD18265834003CC85A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DAB4CBE18265834003CC85A /* Build configuration list for PBXNativeTarget "BeaconEmitterTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +506,7 @@
 				4DAB4CC018265834003CC85A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
