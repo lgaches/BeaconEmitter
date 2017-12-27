@@ -22,6 +22,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface BNMAppDelegate : NSObject <NSApplicationDelegate>
 
