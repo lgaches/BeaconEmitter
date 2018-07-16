@@ -5,13 +5,17 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "511-copy-documents.png"
+      "filename" : "511-copy-documents.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "511-copy-documents@2x.png"
+      "filename" : "511-copy-documents@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
