@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D84053420FC6D970095D6C3 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D84053320FC6D970095D6C3 /* CoreBluetooth.framework */; };
 		4DAB4C8E18265834003CC85A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAB4C8D18265834003CC85A /* Cocoa.framework */; };
 		4DAB4C9818265834003CC85A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DAB4C9618265834003CC85A /* InfoPlist.strings */; };
 		4DAB4C9A18265834003CC85A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB4C9918265834003CC85A /* main.m */; };
@@ -19,7 +20,6 @@
 		4DAB4CB618265834003CC85A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DAB4CB418265834003CC85A /* InfoPlist.strings */; };
 		4DAB4CB818265834003CC85A /* BeaconEmitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB4CB718265834003CC85A /* BeaconEmitterTests.m */; };
 		4DAB4CC318265871003CC85A /* BNMBeaconRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB4CC218265871003CC85A /* BNMBeaconRegion.m */; };
-		4DAB4CC5182658D7003CC85A /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAB4CC4182658D7003CC85A /* IOBluetooth.framework */; };
 		4DCF29571836371C00845C87 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4DCF29561836371C00845C87 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D84053320FC6D970095D6C3 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		4DAB4C8A18265834003CC85A /* BeaconEmitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconEmitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DAB4C8D18265834003CC85A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4DAB4C9018265834003CC85A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -65,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DAB4CC5182658D7003CC85A /* IOBluetooth.framework in Frameworks */,
+				4D84053420FC6D970095D6C3 /* CoreBluetooth.framework in Frameworks */,
 				4DAB4C8E18265834003CC85A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +105,7 @@
 		4DAB4C8C18265834003CC85A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D84053320FC6D970095D6C3 /* CoreBluetooth.framework */,
 				4DAB4CC4182658D7003CC85A /* IOBluetooth.framework */,
 				4DAB4C8D18265834003CC85A /* Cocoa.framework */,
 				4DAB4CAC18265834003CC85A /* XCTest.framework */,
@@ -213,11 +215,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BNM;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Binimo;
 				TargetAttributes = {
 					4DAB4C8918265834003CC85A = {
 						DevelopmentTeam = 6GX5VF8F6Y;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -343,18 +346,32 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -380,19 +397,32 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -409,14 +439,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BeaconEmitter/BeaconEmitter.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6GX5VF8F6Y;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeaconEmitter/BeaconEmitter-Prefix.pch";
 				INFOPLIST_FILE = "BeaconEmitter/BeaconEmitter-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.binimo.apps.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -427,14 +462,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BeaconEmitter/BeaconEmitter.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6GX5VF8F6Y;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeaconEmitter/BeaconEmitter-Prefix.pch";
 				INFOPLIST_FILE = "BeaconEmitter/BeaconEmitter-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.binimo.apps.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -456,6 +496,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "BeaconEmitterTests/BeaconEmitterTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.binimo.apps.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -474,6 +515,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeaconEmitter/BeaconEmitter-Prefix.pch";
 				INFOPLIST_FILE = "BeaconEmitterTests/BeaconEmitterTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.binimo.apps.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
