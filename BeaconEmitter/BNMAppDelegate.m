@@ -22,7 +22,7 @@
 //
 
 #import "BNMAppDelegate.h"
-#import <IOBluetooth/IOBluetooth.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
 #import "BNMBeaconRegion.h"
 
