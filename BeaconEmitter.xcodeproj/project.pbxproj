@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -219,8 +219,6 @@
 				ORGANIZATIONNAME = Binimo;
 				TargetAttributes = {
 					4DAB4C8918265834003CC85A = {
-						DevelopmentTeam = 6GX5VF8F6Y;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -233,7 +231,7 @@
 				};
 			};
 			buildConfigurationList = 4DAB4C8518265834003CC85A /* Build configuration list for PBXProject "BeaconEmitter" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
