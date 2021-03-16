@@ -465,7 +465,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DYGZF839P8;
+				DEVELOPMENT_TEAM = 6GX5VF8F6Y;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeaconEmitter/BeaconEmitter-Prefix.pch";
 				INFOPLIST_FILE = "BeaconEmitter/BeaconEmitter-Info.plist";
