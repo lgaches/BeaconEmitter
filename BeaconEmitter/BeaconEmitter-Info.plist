@@ -30,6 +30,8 @@
 	<string>Copyright © 2013 Binimo. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>We need your permission to use Bluetooth to share iBeacon</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
