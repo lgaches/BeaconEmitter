@@ -11,7 +11,10 @@ import SwiftUI
 struct BeaconEmitterApp: App {
     var body: some Scene {
         WindowGroup {
-            BeaconEmitterView()
+            BeaconEmitterView()                
+                .onAppear {
+                    NSWindow.allowsAutomaticWindowTabbing = false
+                }
         }.commands {
             CommandGroup(replacing: CommandGroupPlacement.newItem, addition: {})            
         }
