@@ -18,13 +18,13 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
     var isStarted: Bool = false
 
     @Published
-    var uuid: String = "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5"
+    var uuid: String = UUID().uuidString
 
     @Published
-    var major: UInt16 = 123
+    var major: UInt16 = 0
 
     @Published
-    var minor: UInt16 = 456
+    var minor: UInt16 = 0
 
     @Published
     var status: String = ""
