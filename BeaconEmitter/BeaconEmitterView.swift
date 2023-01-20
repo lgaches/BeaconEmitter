@@ -29,11 +29,11 @@ struct BeaconEmitterView: View {
                 }.disabled(viewModel.isStarted)
             }
 
-            TextField("Major", value: $viewModel.major, formatter: NumberFormatter())
+            TextField("Major", value: $viewModel.major, formatter: viewModel.majorMinorFormatter)
                 .disabled(viewModel.isStarted)
-            TextField("Minor", value: $viewModel.minor, formatter: NumberFormatter())
+            TextField("Minor", value: $viewModel.minor, formatter: viewModel.majorMinorFormatter)
                 .disabled(viewModel.isStarted)
-            TextField("Power", value: $viewModel.power, formatter: NumberFormatter())
+            TextField("Power", value: $viewModel.power, formatter: viewModel.powerFormatter)
                 .disabled(viewModel.isStarted)
             Text(viewModel.status)
 
