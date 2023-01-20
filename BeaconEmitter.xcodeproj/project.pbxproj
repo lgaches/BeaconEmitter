@@ -22,6 +22,7 @@
 		4D05552F280F7B6200F2CA80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D055532280F7B6200F2CA80 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D055534280F7B6200F2CA80 /* BeaconEmitter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeaconEmitter.entitlements; sourceTree = "<group>"; };
+		4D0A2C46297AD76F00438A84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4D127C4F296E065E001C86AE /* BeaconRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRegion.swift; sourceTree = "<group>"; };
 		4D127C51296E06E5001C86AE /* BeaconEmitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconEmitterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +57,7 @@
 		4D05552A280F7B6000F2CA80 /* BeaconEmitter */ = {
 			isa = PBXGroup;
 			children = (
+				4D0A2C46297AD76F00438A84 /* Info.plist */,
 				4D05552B280F7B6000F2CA80 /* BeaconEmitterApp.swift */,
 				4D127C4F296E065E001C86AE /* BeaconRegion.swift */,
 				4D127C51296E06E5001C86AE /* BeaconEmitterViewModel.swift */,
@@ -287,10 +289,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeaconEmitter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Beacon Emitter";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need your permission to use Bluetooth to share iBeacon";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2023 Laurent Gaches";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -321,10 +324,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeaconEmitter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Beacon Emitter";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need your permission to use Bluetooth to share iBeacon";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2023 Laurent Gaches";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
