@@ -12,6 +12,8 @@ import AppKit
 
 class BeaconEmitterViewModel: NSObject, ObservableObject {
 
+    var majorMinorFormatter = NumberFormatter()
+    var powerFormatter = NumberFormatter()
     var emitter: CBPeripheralManager?
 
     @Published
@@ -35,6 +37,14 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
     override init() {
         super.init()
         self.emitter = CBPeripheralManager(delegate: self, queue: nil)
+
+        self.majorMinorFormatter.allowsFloats = false
+        self.majorMinorFormatter.maximum = NSNumber(value: UInt16.max)
+        self.majorMinorFormatter.minimum = NSNumber(value: UInt16.min)
+
+        self.powerFormatter.allowsFloats = false
+        self.powerFormatter.maximum = NSNumber(value: Int8.max)
+        self.powerFormatter.minimum = NSNumber(value: Int8.min)
     }
 
     func start() {
