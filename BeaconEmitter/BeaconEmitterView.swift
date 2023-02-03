@@ -42,9 +42,9 @@ struct BeaconEmitterView: View {
             } label: {
                 Spacer()
                 if viewModel.isStarted {
-                    Text("Turn iBeacon on")
-                } else {
                     Text("Turn iBeacon off")
+                } else {
+                    Text("Turn iBeacon on")
                 }
                 Spacer()
             }
