@@ -49,7 +49,6 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
 
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(receiveSleepNotification), name: NSWorkspace.willSleepNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(receiveAwakeNotification), name: NSWorkspace.didWakeNotification, object: nil)
-
     }
 
     func startStop() {
@@ -94,10 +93,8 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
     }
 }
 
-
 extension BeaconEmitterViewModel: CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        print(peripheral.state)
         switch(peripheral.state) {
         case .poweredOff:
             self.status = "Bluetooth is currently powered off"
@@ -117,9 +114,7 @@ extension BeaconEmitterViewModel: CBPeripheralManagerDelegate {
     }
 
     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
-        print("DidStartAdvert")
         if let emitter, emitter.isAdvertising {
-            print("DidStartAdvert is ADVERT")
             isStarted = true
         }
     }
