@@ -38,7 +38,7 @@ struct BeaconEmitterView: View {
             Text(viewModel.status)
 
             Button {
-                viewModel.start()
+                viewModel.startStop()
             } label: {
                 Spacer()
                 if viewModel.isStarted {

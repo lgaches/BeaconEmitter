@@ -12,6 +12,7 @@ import AppKit
 
 class BeaconEmitterViewModel: NSObject, ObservableObject {
 
+    private var advertiseBeforeSleep: Bool = false
     var majorMinorFormatter = NumberFormatter()
     var powerFormatter = NumberFormatter()
     var emitter: CBPeripheralManager?
@@ -45,17 +46,18 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
         self.powerFormatter.allowsFloats = false
         self.powerFormatter.maximum = NSNumber(value: Int8.max)
         self.powerFormatter.minimum = NSNumber(value: Int8.min)
+
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(receiveSleepNotification), name: NSWorkspace.willSleepNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(receiveAwakeNotification), name: NSWorkspace.didWakeNotification, object: nil)
     }
 
-    func start() {
-
+    func startStop() {
         guard let emitter else { return }
 
         if emitter.isAdvertising {
             emitter.stopAdvertising()
             isStarted = false
         } else {
-
             if let proximityUUID = NSUUID(uuidString: self.uuid) {
                 let region = BeaconRegion(proximityUUID: proximityUUID, major: self.major, minor: self.minor)
                 emitter.startAdvertising(region.peripheralDataWithMeasuredPower())
@@ -74,12 +76,25 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
         pasteboard.clearContents()
         pasteboard.setString(self.uuid, forType: .string)
     }
-}
 
+    @objc
+    func receiveSleepNotification(_ notification: Notification) {
+        if let emitter,  emitter.isAdvertising {
+            advertiseBeforeSleep = true
+            startStop()
+        }
+    }
+
+    @objc
+    func receiveAwakeNotification(_ notification: Notification) {
+        if advertiseBeforeSleep {
+            startStop()
+        }
+    }
+}
 
 extension BeaconEmitterViewModel: CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        print(peripheral.state)
         switch(peripheral.state) {
         case .poweredOff:
             self.status = "Bluetooth is currently powered off"
