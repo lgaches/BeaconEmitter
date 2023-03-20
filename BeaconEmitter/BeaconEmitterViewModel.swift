@@ -5,12 +5,17 @@
 //  Created by Laurent Gaches.
 //
 
-import Foundation
+import AppKit
 import CoreBluetooth
 import CoreLocation
-import AppKit
+import Foundation
+import SwiftUI
 
 class BeaconEmitterViewModel: NSObject, ObservableObject {
+    @AppStorage("previousUUID") private var savedUUID: String?
+    @AppStorage("major") private var savedMajor: Int?
+    @AppStorage("minor") private var savedMinor: Int?
+    @AppStorage("power") private var savedPower: Int?
 
     private var advertiseBeforeSleep: Bool = false
     var majorMinorFormatter = NumberFormatter()
@@ -37,6 +42,9 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
 
     override init() {
         super.init()
+
+        self.loadSavedValue()
+
         self.emitter = CBPeripheralManager(delegate: self, queue: nil)
 
         self.majorMinorFormatter.allowsFloats = false
@@ -47,8 +55,8 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
         self.powerFormatter.maximum = NSNumber(value: Int8.max)
         self.powerFormatter.minimum = NSNumber(value: Int8.min)
 
-        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(receiveSleepNotification), name: NSWorkspace.willSleepNotification, object: nil)
-        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(receiveAwakeNotification), name: NSWorkspace.didWakeNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.receiveSleepNotification), name: NSWorkspace.willSleepNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.receiveAwakeNotification), name: NSWorkspace.didWakeNotification, object: nil)
     }
 
     func startStop() {
@@ -56,7 +64,7 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
 
         if emitter.isAdvertising {
             emitter.stopAdvertising()
-            isStarted = false
+            self.isStarted = false
         } else {
             if let proximityUUID = NSUUID(uuidString: self.uuid) {
                 let region = BeaconRegion(proximityUUID: proximityUUID, major: self.major, minor: self.minor)
@@ -78,24 +86,49 @@ class BeaconEmitterViewModel: NSObject, ObservableObject {
     }
 
     @objc
-    func receiveSleepNotification(_ notification: Notification) {
-        if let emitter,  emitter.isAdvertising {
-            advertiseBeforeSleep = true
-            startStop()
+    func receiveSleepNotification(_: Notification) {
+        if let emitter, emitter.isAdvertising {
+            self.advertiseBeforeSleep = true
+            self.startStop()
         }
     }
 
     @objc
-    func receiveAwakeNotification(_ notification: Notification) {
-        if advertiseBeforeSleep {
-            startStop()
+    func receiveAwakeNotification(_: Notification) {
+        if self.advertiseBeforeSleep {
+            self.startStop()
+        }
+    }
+
+    func save() {
+        self.savedUUID = self.uuid
+        self.savedMajor = Int(self.major)
+        self.savedMinor = Int(self.minor)
+        self.savedPower = Int(self.power)
+    }
+
+    private func loadSavedValue() {
+        if let savedUUID {
+            self.uuid = savedUUID
+        }
+
+        if let savedMajor {
+            self.major = UInt16(savedMajor)
+        }
+
+        if let savedMinor {
+            self.minor = UInt16(savedMinor)
+        }
+
+        if let savedPower {
+            self.power = Int8(savedPower)
         }
     }
 }
 
 extension BeaconEmitterViewModel: CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        switch(peripheral.state) {
+        switch peripheral.state {
         case .poweredOff:
             self.status = "Bluetooth is currently powered off"
         case .poweredOn:
@@ -113,9 +146,9 @@ extension BeaconEmitterViewModel: CBPeripheralManagerDelegate {
         }
     }
 
-    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+    func peripheralManagerDidStartAdvertising(_: CBPeripheralManager, error _: Error?) {
         if let emitter, emitter.isAdvertising {
-            isStarted = true
+            self.isStarted = true
         }
     }
 }

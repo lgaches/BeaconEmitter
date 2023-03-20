@@ -1,0 +1,10 @@
+# file options
+
+--swiftversion 5.7
+
+# format options
+
+--self insert
+--patternlet inline
+
+# rules

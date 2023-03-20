@@ -8,7 +8,6 @@
 import Foundation
 
 struct BeaconRegion {
-
     var proximityUUID: NSUUID
     var major: UInt16
     var minor: UInt16
@@ -22,7 +21,6 @@ struct BeaconRegion {
     func peripheralDataWithMeasuredPower(_ measuredPower: Int8 = -59) -> [String: Data] {
         let beaconKey = "kCBAdvDataAppleBeaconKey"
         var advBytes = [CUnsignedChar](repeating: 0, count: 21)
-
 
         self.proximityUUID.getBytes(&advBytes)
 

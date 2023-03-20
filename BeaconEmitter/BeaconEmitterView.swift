@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct BeaconEmitterView: View {
-
     @StateObject var viewModel = BeaconEmitterViewModel()
 
     var body: some View {
         Form {
             HStack {
-                TextField("UUID", text: $viewModel.uuid)                    
+                TextField("UUID", text: $viewModel.uuid)
                     .disabled(viewModel.isStarted)
                 Button {
                     viewModel.refreshUUID()
@@ -49,7 +48,10 @@ struct BeaconEmitterView: View {
                 Spacer()
             }
         }
-        .padding()        
+        .padding()
+        .onDisappear {
+            viewModel.save()
+        }
     }
 }
 
