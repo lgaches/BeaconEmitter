@@ -1,10 +1,8 @@
 BeaconEmitter
 =============
 
-[Public TestFlight beta](https://testflight.apple.com/join/EQ8fncz5) (A proper App Store release will come eventually)
+[![Download on the Mac App Store](assets/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg)](https://apps.apple.com/us/app/beacon-emitter/id1665201240)
 
-Turn your Mac into an iBeacon.
+![BeaconEmitter](assets/BeaconEmitter.png)
 
-<p align="center">
-  <img src="assets/BeaconEmitter.png" alt="BeaconEmitter" title="BeaconEmitter">
-</p>
+Beacon Emitter is a macOS app that turns your Mac device into an iBeacon emitter. With this app, you can easily create and configure a beacon that broadcasts its presence to nearby devices equipped with Bluetooth Low Energy (BLE) technology.
