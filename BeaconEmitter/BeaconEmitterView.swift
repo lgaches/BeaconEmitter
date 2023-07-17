@@ -13,7 +13,7 @@ struct BeaconEmitterView: View {
     var body: some View {
         Form {
             HStack {
-                TextField("UUID", text: $viewModel.uuid)
+                TextField("Unique Identifier", text: $viewModel.uuid)
                     .disabled(viewModel.isStarted)
                 Button {
                     viewModel.refreshUUID()
@@ -28,9 +28,9 @@ struct BeaconEmitterView: View {
                 }.disabled(viewModel.isStarted)
             }
 
-            TextField("Major", value: $viewModel.major, formatter: viewModel.majorMinorFormatter)
+            TextField("Most significant value", value: $viewModel.major, formatter: viewModel.majorMinorFormatter)
                 .disabled(viewModel.isStarted)
-            TextField("Minor", value: $viewModel.minor, formatter: viewModel.majorMinorFormatter)
+            TextField("Least significant value", value: $viewModel.minor, formatter: viewModel.majorMinorFormatter)
                 .disabled(viewModel.isStarted)
             TextField("Power", value: $viewModel.power, formatter: viewModel.powerFormatter)
                 .disabled(viewModel.isStarted)
