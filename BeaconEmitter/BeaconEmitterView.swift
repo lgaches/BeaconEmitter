@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  BeaconEmitterView.swift
 //  BeaconEmitter
 //
 //  Created by Laurent Gaches.
